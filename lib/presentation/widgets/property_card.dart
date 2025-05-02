@@ -17,7 +17,7 @@ class PropertyCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         image: DecorationImage(
-          image: AssetImage("assets/images/house_sample.jpg"),
+          image: AssetImage("images/house_sample.jpg"),
           fit: BoxFit.cover,
         ),
       ),

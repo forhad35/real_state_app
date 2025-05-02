@@ -15,7 +15,7 @@ class CategorySelector extends StatelessWidget {
         return GestureDetector(
           onTap: () => controller.selectCategory(cat),
           child: Container(
-            margin: EdgeInsets.only(right: 12),
+            margin: EdgeInsets.only(right: 10),
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: selected ? Colors.blue : Colors.grey[200],

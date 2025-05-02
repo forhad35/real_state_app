@@ -6,4 +6,8 @@ class HomeController extends GetxController {
   void selectCategory(String category) {
     selectedCategory.value = category;
   }
+  var isMenuOpen = false.obs;
+
+
+
 }
