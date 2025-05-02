@@ -88,12 +88,12 @@ class HomePage extends StatelessWidget {
                         onTap: () {
                           Get.toNamed('/property-detail');
                         },
-                        leading: Image.asset("images/house1.jpg", width: 60),
+                        leading: Image.asset("assets/images/house1.jpg", width: 60),
                         title: Text("Orchard House"),
                         subtitle: Text("Rp. 2.500.000.000 / Year\n6 Bedroom • 4 Bathroom"),
                       ),
                       ListTile(
-                        leading: Image.asset("images/house2.jpg", width: 60),
+                        leading: Image.asset("assets/images/house2.jpg", width: 60),
                         title: Text("The Hollies House"),
                         subtitle: Text("Rp. 2.000.000.000 / Year\n5 Bedroom • 2 Bathroom"),
                       ),
@@ -101,14 +101,14 @@ class HomePage extends StatelessWidget {
                         onTap: () {
                           Get.toNamed('/property-detail');
                         },
-                        leading: Image.asset("images/house3.jpg", width: 60),
+                        leading: Image.asset("assets/images/house3.jpg", width: 60),
                         title: Text("Orchard House"),
                         subtitle: Text("Rp. 2.500.000.000 / Year\n6 Bedroom • 4 Bathroom"),
                       ),  ListTile(
                         onTap: () {
                           Get.toNamed('/property-detail');
                         },
-                        leading: Image.asset("images/house4.jpg", width: 60),
+                        leading: Image.asset("assets/images/house4.jpg", width: 60),
                         title: Text("Orchard House"),
                         subtitle: Text("Rp. 2.500.000.000 / Year\n6 Bedroom • 4 Bathroom"),
                       ),

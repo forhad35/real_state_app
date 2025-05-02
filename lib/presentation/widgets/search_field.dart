@@ -6,7 +6,7 @@ class SearchField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: 'Search address, or near you',
-        prefixIcon: Icon(Icons.search),
+        prefixIcon: Image.asset("assets/icon/IC_Search.png",width:24,height:24),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         contentPadding: EdgeInsets.all(8),
         fillColor: Colors.white,
