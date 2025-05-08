@@ -1,58 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:skill_test/presentation/pages/home_page.dart';
-import 'package:skill_test/presentation/pages/menu_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import '../controllers/menu_controller.dart';
+import '../pages/menu_screen.dart';
 
-class Drawer extends StatelessWidget {
-  const Drawer({super.key});
+class MainLayout extends StatelessWidget {
+  final Widget child;
+
+  const MainLayout({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Stack(children: [MenuScreen(), AnimationScreen()]));
-  }
-}
+    final menuController = Get.find<MenusController>();
 
-class AnimationScreen extends StatefulWidget {
-  const AnimationScreen({super.key});
+    return Scaffold(
+      body: Obx(() {
+        return Stack(
+          children: [
+            MenuScreen(), // Your menu UI
+            GestureDetector(
+              onHorizontalDragUpdate: (details) {
+                if (details.delta.dx > 10) {
+                  menuController.isMenuOpen.value = true;
+                }
+                else if (details.delta.dx < 10) {
+                  menuController.closeMenu();
+                }
+              },
+              onTap: () {
+                if (menuController.isMenuOpen.value) {
+                  menuController.closeMenu();
+                }
+              },
+              child: AnimatedContainer(
+                clipBehavior: Clip.hardEdge,
+                duration: const Duration(milliseconds: 300),
+                transform: Matrix4.translationValues(
+                  menuController.isMenuOpen.value ? 200 : 0,
+                  menuController.isMenuOpen.value ? 80 : 0,
+                  0,
 
-  @override
-  _AnimationScreen createState() => _AnimationScreen();
-}
-
-class _AnimationScreen extends State<AnimationScreen> {
-  double xOffset = 0;
-  double yOffset = 0;
-
-  bool isDrawerOpen = false;
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      transform:
-          Matrix4.translationValues(xOffset, yOffset, 0)
-            ..scale(isDrawerOpen ? 0.85 : 1.00),
-      duration: Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        borderRadius:
-            isDrawerOpen ? BorderRadius.circular(20) : BorderRadius.circular(0),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            xOffset = 200;
-            yOffset = 50;
-            isDrawerOpen = true;
-          });
-        },
-        onDoubleTap: () {
-          setState(() {
-            xOffset = 0;
-            yOffset = 0;
-            isDrawerOpen = false;
-          });
-        },
-
-        child: HomePage(),
-      ),
+                )
+                  ..scale(menuController.isMenuOpen.value ? 0.8 : 1.0),
+                decoration: BoxDecoration(
+                  borderRadius: menuController.isMenuOpen.value
+                      ? const BorderRadius.all(Radius.circular(24)
+                  )
+                      : BorderRadius.zero,
+                  boxShadow: menuController.isMenuOpen.value
+                      ? [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 40,
+                      offset: Offset(-4, 0),
+                    )
+                  ]
+                      : [],
+                ),
+                child: AbsorbPointer(
+                  absorbing: menuController.isMenuOpen.value,
+                  child: ScreenUtilInit(
+    designSize: Size(350, 750),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (context,chil) {
+      return child;
+        }
+                ),
+              ),
+            ),
+            )],
+        );
+      }),
     );
   }
 }
