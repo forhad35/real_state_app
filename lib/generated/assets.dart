@@ -7,6 +7,7 @@ class Assets {
   static const String iconICBath = 'assets/icon/IC_Bath.png';
   static const String iconICBed = 'assets/icon/IC_Bed.png';
   static const String iconICBookmark = 'assets/icon/IC_Bookmark.png';
+  static const String iconFilter = 'assets/icon/filter.png';
   static const String iconICHelp = 'assets/icon/IC_Help.png';
   static const String iconICLocation = 'assets/icon/IC_Location.png';
   static const String iconICLogout = 'assets/icon/IC_Logout.png';

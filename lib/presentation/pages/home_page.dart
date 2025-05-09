@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skill_test/presentation/widgets/custom_dropdown.dart';
 import '../../core/theme.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/feature_chip.dart';
@@ -22,22 +23,13 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text("Location",style: TextStyle(fontSize: 16,color: AppTheme.smallTextColor),),
               // Location and Notification
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DropdownButton<String>(
-                    value: 'Jakarta',
-                    items:
-                        ['Jakarta', 'Bandung'].map((city) {
-                          return DropdownMenuItem(
-                            child: Text(city),
-                            value: city,
-                          );
-                        }).toList(),
-                    onChanged: (value) {},
-                  ),
-                  Icon(Icons.notifications_none),
+                  CustomDropdown(),
+                  Image.asset("assets/icon/IC_Notification.png",color: Colors.black,),
                 ],
               ),
               SizedBox(height: 16),
@@ -52,7 +44,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(Icons.filter_list, color: Colors.white),
+                    child: Image.asset("assets/icon/filter.png")
                   ),
                 ],
               ),
@@ -61,9 +53,17 @@ class HomePage extends StatelessWidget {
               CategorySelector(),
               SizedBox(height: 16),
               // Near from you section
-              Text(
-                "Near from you",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                children: [
+                  Text(
+                    "Near from you",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton(onPressed: (){}, child: Text("See More",style: TextStyle(color: AppTheme.smallTextColor),))
+
+                ],
               ),
               SizedBox(height: 8),
               SizedBox(
@@ -86,9 +86,16 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               // Best for you section
-              Text(
-                "Best for you",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Best for you",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton(onPressed: (){}, child: Text("See More",style: TextStyle(color: AppTheme.smallTextColor),))
+
+                ],
               ),
               SizedBox(height: 8),
               Expanded(
@@ -148,7 +155,7 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(7)),
                         ),
                         child: Image.asset(
-                          "assets/images/house1.jpg",
+                          "assets/images/house2.jpg",
                           width: 60,
                         ),
                       ),
@@ -195,16 +202,16 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(7)),
                         ),
                         child: Image.asset(
-                          "assets/images/house1.jpg",
+                          "assets/images/house3.jpg",
                           width: 60,
                         ),
                       ),
-                      title: Text("Orchard House"),
+                        title: Text("Sea Breezes  HouseSea Breezes  House"),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Rp. 2.500.000.000 / Year",
+                            "Rp. 900.000.000 / Year",
                             style: TextStyle(color: AppTheme.primaryColor),
                           ),
                           Row(
@@ -212,7 +219,7 @@ class HomePage extends StatelessWidget {
                             children: const [
                               FeatureChip(
                                 icon: "assets/icon/IC_Bed.png",
-                                label: '6 Bedroom',
+                                label: '2 Bedroom',
                                 gap: 5,
                                 iconColor: Colors.grey,
                                 size: 15,
@@ -221,7 +228,7 @@ class HomePage extends StatelessWidget {
                               SizedBox(width: 25),
                               FeatureChip(
                                 icon: "assets/icon/IC_Bath.png",
-                                label: '4 Bathroom',
+                                label: '2 Bathroom',
                                 gap: 5,
                                 iconColor: Colors.grey,
                                 size: 15,
@@ -242,7 +249,7 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(7)),
                         ),
                         child: Image.asset(
-                          "assets/images/house1.jpg",
+                          "assets/images/house4.jpg",
                           width: 60,
                         ),
                       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PropertyCard extends StatelessWidget {
   final String title, location, distance;
 
-  const PropertyCard({
+  const PropertyCard({super.key,
     required this.title,
     required this.location,
     required this.distance,
@@ -30,7 +30,12 @@ class PropertyCard extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.6), borderRadius: BorderRadius.circular(12)),
-              child: Text(distance, style: TextStyle(color: Colors.white)),
+              child: Row(
+                children: [
+                  Icon(Icons.location_on_outlined,color: Colors.white,size: 12,),
+                  Text(distance, style: TextStyle(color: Colors.white,fontSize: 12)),
+                ],
+              ),
             ),
           ),
           Positioned(
